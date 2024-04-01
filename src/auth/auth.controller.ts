@@ -4,13 +4,11 @@ import {
   HttpCode,
   HttpStatus,
   Post,
-  Req,
 } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { AuthDto } from './dto'
 import {
   ApiAcceptedResponse,
-  ApiBadRequestResponse,
   ApiCreatedResponse,
 } from '@nestjs/swagger'
 import { UserEntity } from '../user/entity/user.entity'

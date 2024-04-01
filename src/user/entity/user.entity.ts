@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger'
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger'
 import { User } from '@prisma/client'
 
 export class UserEntity implements User{
@@ -14,11 +14,7 @@ export class UserEntity implements User{
   @ApiProperty({ example: 'pengenganteng@gmail.com' })
   email: string
 
-  @ApiProperty({
-    example: 'hashed_password',
-    required: false,
-    nullable: true,
-  })
+  @ApiHideProperty() 
   hash: string | null
 
   @ApiProperty({
