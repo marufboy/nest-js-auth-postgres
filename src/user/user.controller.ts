@@ -4,16 +4,18 @@ import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { EditUserDto } from './dto';
 import { UserService } from './user.service';
-import { ApiAcceptedResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './entity/user.entity';
 
 @UseGuards(JwtGuard)
+@ApiTags('Users')
+@ApiBearerAuth()
 @Controller('users')
 export class UserController {   
     constructor(private userService: UserService) {}
 
     @Get('me')
-    @ApiAcceptedResponse({
+    @ApiOkResponse({
         description: "Get user object as response",
         type: UserEntity
     })
@@ -22,7 +24,7 @@ export class UserController {
     }
 
     @Patch()
-    @ApiAcceptedResponse({
+    @ApiOkResponse({
         description: "update successfull user object as response",
         type: UserEntity
     })

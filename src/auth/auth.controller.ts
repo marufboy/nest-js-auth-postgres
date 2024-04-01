@@ -8,11 +8,11 @@ import {
 import { AuthService } from './auth.service'
 import { AuthDto } from './dto'
 import {
-  ApiAcceptedResponse,
-  ApiCreatedResponse,
+  ApiCreatedResponse, ApiOkResponse, ApiTags,
 } from '@nestjs/swagger'
 import { UserEntity } from '../user/entity/user.entity'
 
+@ApiTags("Auth")
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
@@ -29,7 +29,7 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('signin')
-  @ApiAcceptedResponse({
+  @ApiOkResponse({
     description: 'Signin successful',
     schema: {
       example: {
